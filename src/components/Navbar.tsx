@@ -1,6 +1,9 @@
 import { FC } from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { ArrowRight } from "lucide-react";
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface NavbarProps {}
 
@@ -13,6 +16,34 @@ const Navbar: FC<NavbarProps> = ({}) => {
             <span className="text-orange-600">My</span>
             <span>Education.</span>
           </Link>
+          <div className="hidden items-center space-x-4 sm:flex">
+            <>
+              <Link
+                href={"/pricing"}
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "sm",
+                })}
+              >
+                Pricing
+              </Link>
+              <LoginLink
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "sm",
+                })}
+              >
+                Sign in
+              </LoginLink>
+              <RegisterLink
+                className={buttonVariants({
+                  size: "sm",
+                })}
+              >
+                Get started <ArrowRight className="w-5 h-5 ml-1" />
+              </RegisterLink>
+            </>
+          </div>
         </div>
       </MaxWidthWrapper>
     </nav>
